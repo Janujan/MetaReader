@@ -1,22 +1,46 @@
 {{diagnostic}}
-<div class="container">
+<div class="container" [hidden]="submitted">
     <h1>Meta Form</h1>
     <form (ngSubmit)="onSubmit()" #metaform="ngForm" >
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name"
                    required
-                   [(ngModel)]="model.name" name="name">
+                   [(ngModel)]="model.name" name="name" #name="ngModel">
+            <div [hidden]="name.valid || name.pristine"
+                   class="alert alert-danger">
+                Name is required
+            </div>
+
         </div>
 
         <div class="form-group">
             <label for="name">Filetype</label>
             <input type="text" class="form-control" id="filetype"
                    required
-                   [(ngModel)]="model.filetype" name="filetype">
+                   [(ngModel)]="model.filetype" name="filetype" #filetype="ngModel">
+            
+            <div [hidden]="filetype.valid || filetype.pristine"
+                   class="alert alert-danger">
+                Filetype is required
+            </div>
           </div>
 
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success" [disabled]="!metaform.form.valid">Submit</button>
+
+      <button type="button" class="btn btn-default" (click)="newMeta(); metaform.reset();">New MetaData</button>
 
     </form>
+</div>
+
+<div class="container" [hidden]="!submitted">
+    <h2>You've already submitted the meta data!</h2>
+    <div class="row">
+        {{model.name}}
+    </div>
+    <div class="row">
+        {{model.filetype}}
+    </div>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+
 </div>
