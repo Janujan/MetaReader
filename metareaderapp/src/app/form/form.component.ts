@@ -18,7 +18,7 @@ export class FormComponent{
 
    onSubmit() { this.submitted = true; }
 
-   newMeta(){
+   newMeta() {
      this.model = new Metadata(2, '', '');
    }
 }
