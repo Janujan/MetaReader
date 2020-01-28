@@ -7,18 +7,19 @@ import { Metadata } from '../metadata';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent{
+  private metaDataArray: Array<Metadata> = [];
+  private fieldData: Metadata = {fieldname: null, fieldtype: null};
 
-  constructor() { }
-
-  model = new Metadata(1, 'user1', 'csv');
   submitted = false;
 
-   // TODO: Remove this when we're done
-   get diagnostic() { return JSON.stringify(this.model); }
+  addField() {
+     this.metaDataArray.push(this.fieldData);
+     this.fieldData = {fieldname: null, fieldtype: null};
+  }
+  deleteField(index: number) {
+    this.metaDataArray.splice(index, 1);
+  }
+  //  // TODO: Remove this when we're done
+  get diagnostic() { return JSON.stringify(this.metaDataArray); }
 
-   onSubmit() { this.submitted = true; }
-
-   newMeta() {
-     this.model = new Metadata(2, '', '');
-   }
 }
