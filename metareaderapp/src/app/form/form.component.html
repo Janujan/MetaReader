@@ -6,33 +6,23 @@
             <label for="name">FieldName</label>
             <input type="text" class="form-control" id="FieldName"
                    required
-                   [(ngModel)]="fieldData.FieldName" name="FieldName" #fieldname="ngModel">
-            <!-- <div [hidden]="FieldName.valid || FieldName.pristine"
-                   class="alert alert-danger">
-                Field Name is required
-            </div> -->
-
+                   [(ngModel)]="fieldData.fieldname" name="fieldname" #fieldname="ngModel">
         </div>
 
         <div class="form-group">
             <label for="name">FieldType</label>
             <input type="text" class="form-control" id="FieldType"
                    required
-                   [(ngModel)]="fieldData.FieldType" name="FieldType" #fieldtype="ngModel">
-            
-            <!-- <div [hidden]="FieldType.valid || FieldType.pristine"
-                   class="alert alert-danger">
-                Field Type is required
-            </div> -->
+                   [(ngModel)]="fieldData.fieldtype" name="fieldtype" #fieldtype="ngModel">
         </div>
 
-      <button type="submit" class="btn btn-success" [disabled]="!metaform.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="addField();"[disabled]="!metaform.form.valid">Add Field</button>
 
-      <button type="button" class="btn btn-default" (click)="newMeta(); metaform.reset();">New MetaData</button>
-
+      <button type="button" class="btn btn-default" (click)="clear(); metaform.reset();">Clear MetaData</button>
     </form>
 </div>
-
+<br>
+<div class="container">
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -44,28 +34,16 @@
     <tbody>
         <tr *ngFor="let field of metaDataArray; let i = index">
             <td>
-                <input [(ngModel)]="field.FieldName" class="form-control" type="text" name="{{field.FieldName}}" />
+                <input [(ngModel)]="field.fieldname" class="form-control" type="text" name="{{field.fieldname}}" />
             </td>
             <td>
-                <input [(ngModel)]="field.FieldType" class="form-control" type="text" name="{{field.FieldType}}" />
+                <input [(ngModel)]="field.fieldtype" class="form-control" type="text" name="{{field.fieldtype}}" />
             </td>
             <td>
-                <button class="btn btn-default"  type="button" ng-Click="deleteFieldValue(i)">Delete</button>
+                <button class="btn btn-default"  type="button" (click)="deleteField(i)">Delete</button>
             </td>
-        </tr>
-        <!-- <tr>
-            <td>
-                <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttribute.code" name="newAttributeCode" />
-            </td>
-            <td>
-                <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />
-            </td>
-            <td>
-                <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.price" name="newAttributePrice" />
-            </td>
-            <td>
-                <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
-            </td>
-        </tr>  -->
     </tbody>
 </table>
+<button type="submit" class="btn btn-success" (click)="saveForm();"[disabled]="submitted">Submit</button>
+<button type="button" class="btn btn-default" (click)="editForm();" [disabled]="!submitted">Edit Form</button>
+</div>
