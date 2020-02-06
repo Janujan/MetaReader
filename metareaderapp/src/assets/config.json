@@ -1,0 +1,10 @@
+[
+    {
+        "fieldname": "name",
+        "fieldtype": "string"
+    },
+    {
+        "fieldname": "age",
+        "fieldtype": "integer"
+    }
+]
