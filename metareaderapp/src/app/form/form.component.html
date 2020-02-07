@@ -6,14 +6,14 @@
             <label for="name">FieldName</label>
             <input type="text" class="form-control" id="FieldName"
                    required
-                   [(ngModel)]="fieldData.fieldname" name="fieldname" #fieldname="ngModel">
+                   [(ngModel)]="fieldData.fieldName" name="fieldname" #fieldname="ngModel">
         </div>
 
         <div class="form-group">
             <label for="name">FieldType</label>
             <input type="text" class="form-control" id="FieldType"
                    required
-                   [(ngModel)]="fieldData.fieldtype" name="fieldtype" #fieldtype="ngModel">
+                   [(ngModel)]="fieldData.fieldType" name="fieldtype" #fieldtype="ngModel">
         </div>
 
       <button type="button" class="btn btn-default" (click)="addField();"[disabled]="!metaform.form.valid">Add Field</button>
@@ -34,10 +34,10 @@
     <tbody>
         <tr *ngFor="let field of metaDataArray; let i = index">
             <td>
-                <input [(ngModel)]="field.fieldname" class="form-control" type="text" name="{{field.fieldname}}" />
+                <input [(ngModel)]="field.fieldName" class="form-control" type="text" name="{{field.fieldName}}" />
             </td>
             <td>
-                <input [(ngModel)]="field.fieldtype" class="form-control" type="text" name="{{field.fieldtype}}" />
+                <input [(ngModel)]="field.fieldType" class="form-control" type="text" name="{{field.fieldType}}" />
             </td>
             <td>
                 <button class="btn btn-default"  type="button" (click)="deleteField(i)">Delete</button>
