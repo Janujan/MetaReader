@@ -10,7 +10,7 @@ import { Metadata } from './metadata';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
-    })
+  })
 };
 
 // const configUrl = 'assets/config.json';
@@ -36,7 +36,7 @@ export class MetadataService {
   // Post method for saving data
   // only post the fields that were not already stored
   postMetaData( data: Metadata[]): Observable<any> {
-    
+
     const newdata = [];
 
     data.forEach(element => {
