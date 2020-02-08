@@ -11,7 +11,7 @@ import { MetadataService } from '../metadata.service';
 export class FormComponent implements OnInit{
 
   private metaDataArray: Array<Metadata> = [];
-  private fieldData: Metadata = {fieldname: null, fieldtype: null};
+  private fieldData: Metadata = {id: null, fieldName: null, fieldType: null};
 
   submitted = false;
   constructor(private metadataService: MetadataService) {}
@@ -22,6 +22,7 @@ export class FormComponent implements OnInit{
     .subscribe(
       data => {
         this.metaDataArray = data;
+        console.log(data);
       },
       error => {
         console.log(error);
@@ -32,7 +33,7 @@ export class FormComponent implements OnInit{
   // click function for when a new field is added
   addField() {
      this.metaDataArray.push(this.fieldData);
-     this.fieldData = {fieldname: null, fieldtype: null};
+     this.fieldData = {id: null, fieldName: null, fieldType: null};
   }
 
   // click function for when a field is being deleted

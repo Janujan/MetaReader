@@ -1,7 +1,8 @@
 export class Metadata {
     constructor(
-        public fieldname: string,
-        public fieldtype: string,
+        public id: number,
+        public fieldName: string,
+        public fieldType: string,
       ) {  }
 }
 
